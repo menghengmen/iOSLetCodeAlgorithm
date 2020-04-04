@@ -40,25 +40,44 @@ struct ListNode {
 //  解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 
     NSString *str = @"gasdkgkasgjdnafgdgda";
-    NSMutableSet*set = [NSMutableSet new];
-      long n = str.length;
-      int ans = 0, i = 0, j = 0 ,index = 0;
-      while (i<n && j<n) {
-          if (![set containsObject:[str substringWithRange:NSMakeRange(j,1)]]) {
-               [set addObject:[str substringWithRange:NSMakeRange(j++, 1)]];
-                    if (j - i > ans) {
-                         ans = j - i;
-                         index = i;
-                       }
-                 }else{
-              
-             [set removeObject:[str substringWithRange:NSMakeRange(i++, 1)]];
-          }
-       
-   }
-      NSLog(@"%@",[str substringWithRange:NSMakeRange(index, ans)]);
-
+    NSMutableSet *set = [NSMutableSet new];
+    long n = str.length;
+    int ans = 0,i =0,j =0 ,index =0 ;
+   // while (i <n && j <n) {
+        if ([set containsObject:[str substringWithRange:NSMakeRange(j, 1)]]) {
+            [set addObject:[str substringWithRange:NSMakeRange(j++, 1)]];
+            if (j - i >ans) {
+                ans = j-i;
+                index = i;
+            } else {
+                [set removeObject:[str substringWithRange:NSMakeRange(i++, 1)]];
+            }
+        }
+   // }
+     NSLog(@"无重复字符的最长子串%@",[str substringWithRange:NSMakeRange(index, ans)]);
+    
+    //  4:  题目描述
+//    计算字符串最后一个单词的长度，单词以空格隔开。
+//    输入描述:
+//    一行字符串，非空，长度小于5000。
+//    输出描述:
+//    整数N，最后一个单词的长度。
+//    示例1
+//    输入
+//    hello world
+//    输出
+//    5
+    NSString *sepStr = @"i love beautiful!";
+    NSArray *sepArr  = [sepStr componentsSeparatedByString:@" "];
+    NSString *str1 = [sepArr lastObject];
+    NSLog(@"最后一个单词的长度为%lu",(unsigned long)str1.length);
+    
 }
+
+
+
+
+
 
 -(void)calcalateWithNumbers:(NSArray*)arr target:(int)target{
     for (int i = 0; i <arr.count-1; i ++) {
