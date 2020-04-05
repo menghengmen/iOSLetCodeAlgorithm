@@ -79,6 +79,7 @@ struct ListNode {
 //    输出描述:
 //    输出输入字符串中含有该字符的个数。
     [self getDuplicateSubStrCountInCompleteStr:@"aaaabcdef" withSubStr:@"a"];
+    [self getDuplicateSubStrLocInCompleteStr:@"aaaabcdef" withSubStr:@"a"];
     
 }
 
@@ -89,6 +90,22 @@ struct ListNode {
    return  completeStr.length - [completeStr stringByReplacingOccurrencesOfString:subStr withString:@""].length;
 }
 
+//利用切分先得数组,再根据索引计算
+- (NSMutableArray *)getDuplicateSubStrLocInCompleteStr:(NSString *)completeStr withSubStr:(NSString *)subStr
+{
+    NSArray * separatedStrArr = [completeStr componentsSeparatedByString:subStr];
+    NSMutableArray * locMuArr = [[NSMutableArray alloc]init];
+    
+    NSInteger index = 0;
+    for (NSInteger i = 0; i<separatedStrArr.count-1; i++) {
+        NSString * separatedStr = separatedStrArr[i];
+        index = index + separatedStr.length;
+        NSNumber * loc_num = [NSNumber numberWithInteger:index];
+        [locMuArr addObject:loc_num];
+        index = index+subStr.length;
+    }
+    return locMuArr;
+}
 
 
 
