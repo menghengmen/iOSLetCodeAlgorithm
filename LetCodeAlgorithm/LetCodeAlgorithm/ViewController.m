@@ -80,8 +80,22 @@ struct ListNode {
 //    输出输入字符串中含有该字符的个数。
     [self getDuplicateSubStrCountInCompleteStr:@"aaaabcdef" withSubStr:@"a"];
     [self getDuplicateSubStrLocInCompleteStr:@"aaaabcdef" withSubStr:@"a"];
-    
+//    6:
+     //  计算两个字符串的最大公共字串的长度，字符不区分大小写
+     //  详细描述
+    NSString *astr = @"asdfaS";
+    NSString *bstr = @"werAsdfaswer";
+    if (astr.length <= bstr.length && [[bstr lowercaseString] containsString:[astr lowercaseString]]) {
+        NSLog(@"包含%lu",(unsigned long)astr.length);
+    }
+
+
+
 }
+
+
+
+
 
 //利用替换先把重复元素替换掉,再根据length长度做判断
 - (NSInteger )getDuplicateSubStrCountInCompleteStr:(NSString *)completeStr withSubStr:(NSString *)subStr
