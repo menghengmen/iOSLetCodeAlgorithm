@@ -91,7 +91,19 @@ struct ListNode {
     // 7:输入一个日期(年月日)，计算是这一年中的第几天
     NSString *dayStr = @"2020-4-19";
     NSArray  *dayArr = [dayStr componentsSeparatedByString:@"-"];
-    int days = [self calculateDayByYear:[dayArr[0]intValue] month:[dayArr[1]intValue] day:[dayArr[2]intValue]];
+     [self calculateDayByYear:[dayArr[0]intValue] month:[dayArr[1]intValue] day:[dayArr[2]intValue]];
+    // 8:输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。
+    int intInteger = 9876673;
+    int result = 0;// 翻转后的数字
+    while (1 == 1) {
+        int i = intInteger %10;
+        result = result *10 +i;
+        n = n/10;
+        if (n ==0) {
+            break;
+        }
+    }
+    NSLog(@"%d",result);
 }
 
 /// 返回第几天
@@ -118,17 +130,17 @@ struct ListNode {
         case 7:
              days +=31;
         case 6:
-            days +=30;
+            days  +=30;
         case 5:
-            days +=31;
+            days  +=31;
         case 4:
-            days +=30;
+            days  +=30;
         case 3:
-            days +=31;
+            days  +=31;
         case 2:
-            days +=28 +flag;
+            days  +=28 +flag;
         case 1:
-            days +=31;
+            days  +=31;
        default:
             break;
     }
@@ -136,8 +148,6 @@ struct ListNode {
     return days + day;
     
 }
-
-
 
 //利用替换先把重复元素替换掉,再根据length长度做判断
 - (NSInteger )getDuplicateSubStrCountInCompleteStr:(NSString *)completeStr withSubStr:(NSString *)subStr
@@ -162,14 +172,6 @@ struct ListNode {
     }
     return locMuArr;
 }
-
-
-
-
-
-
-
-
 
 -(void)calcalateWithNumbers:(NSArray*)arr target:(int)target{
     for (int i = 0; i <arr.count-1; i ++) {
