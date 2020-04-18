@@ -93,13 +93,13 @@ struct ListNode {
     NSArray  *dayArr = [dayStr componentsSeparatedByString:@"-"];
      [self calculateDayByYear:[dayArr[0]intValue] month:[dayArr[1]intValue] day:[dayArr[2]intValue]];
     // 8:输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。
-    int intInteger = 9876673;
+    int intInteger = 673;
     int result = 0;// 翻转后的数字
-    while (1 == 1) {
+    while (1) {
         int i = intInteger %10;
         result = result *10 +i;
-        n = n/10;
-        if (n ==0) {
+        intInteger = intInteger/10;
+        if (intInteger ==0) {
             break;
         }
     }
