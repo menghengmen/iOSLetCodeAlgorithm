@@ -80,20 +80,62 @@ struct ListNode {
 //    输出输入字符串中含有该字符的个数。
     [self getDuplicateSubStrCountInCompleteStr:@"aaaabcdef" withSubStr:@"a"];
     [self getDuplicateSubStrLocInCompleteStr:@"aaaabcdef" withSubStr:@"a"];
-//    6:
+     //    6:
      //  计算两个字符串的最大公共字串的长度，字符不区分大小写
      //  详细描述
     NSString *astr = @"asdfaS";
     NSString *bstr = @"werAsdfaswer";
     if (astr.length <= bstr.length && [[bstr lowercaseString] containsString:[astr lowercaseString]]) {
-        NSLog(@"包含%lu",(unsigned long)astr.length);
+        NSLog(@"包含%ld",astr.length);
     }
-
-
-
+    // 7:输入一个日期(年月日)，计算是这一年中的第几天
+    NSString *dayStr = @"2020-4-19";
+    NSArray  *dayArr = [dayStr componentsSeparatedByString:@"-"];
+    int days = [self calculateDayByYear:[dayArr[0]intValue] month:[dayArr[1]intValue] day:[dayArr[2]intValue]];
 }
 
-
+/// 返回第几天
+/// @param year 年
+/// @param month 月
+/// @param day 日
+-(int)calculateDayByYear:(int)year  month:(int)month day:(int)day{
+    int flag = 0; //
+    int days = 0; // 第几天
+    if (year %4 == 0 && year %100 !=0) { // 是否是闰年
+        flag = 1;
+    }
+    switch (month -1) {
+        case 12:
+             days +=31;
+        case 11:
+             days +=31;
+        case 10:
+             days +=31;
+        case 9:
+             days +=30;
+        case 8:
+             days +=31;
+        case 7:
+             days +=31;
+        case 6:
+            days +=30;
+        case 5:
+            days +=31;
+        case 4:
+            days +=30;
+        case 3:
+            days +=31;
+        case 2:
+            days +=28 +flag;
+        case 1:
+            days +=31;
+       default:
+            break;
+    }
+    
+    return days + day;
+    
+}
 
 
 
