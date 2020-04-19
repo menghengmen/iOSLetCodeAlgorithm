@@ -95,7 +95,7 @@ struct ListNode {
     // 8:输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。
     int intInteger = 673;
     int result = 0;// 翻转后的数字
-    while (1) {
+    while (YES) {
         int i = intInteger %10;
         result = result *10 +i;
         intInteger = intInteger/10;
@@ -104,7 +104,42 @@ struct ListNode {
         }
     }
     NSLog(@"%d",result);
+    // 9:输入一个double数 输出描述: 输出人民币格式
+    NSMutableString *moneyStr = [self calculateMoneyBy:34843];
 }
+
+-(NSMutableString *)calculateMoneyBy:(double)money{
+    NSMutableString *moneyStr = [NSMutableString new];
+    NSArray *digitalArr = @[@"壹",@"贰",@"叁",@"肆",@"伍",@"陆",@"柒",@"捌",@"玖",@"拾"];
+   // NSArray *moneyArr   = @[@"仟",@"万",@"亿",@"元",@"角",@"分",@"零"];
+    if (money/10000 > 1) { // 万部分
+        [moneyStr appendString:[NSString stringWithFormat:@"%@万",digitalArr[(int)money/10000-1]]];
+        money -= (int)money/10000;
+    }
+        
+    
+    if (money/1000 > 1){
+        [moneyStr appendString:[NSString stringWithFormat:@"%@仟",digitalArr[(int)money/1000-1]]];
+        money -= (int)money/1000;
+
+    }
+    
+    if (money/100 >1){
+        [moneyStr appendString:[NSString stringWithFormat:@"%@佰",digitalArr[(int)money/1000-1]]];
+        money -= (int)money/100;
+
+    } 
+    
+    if(money/10 >1){
+        [moneyStr appendString:[NSString stringWithFormat:@"%@十",digitalArr[(int)money/1000-1]]];
+        money -= (int)money/10;
+
+    }
+
+    return moneyStr;
+}
+
+
 
 /// 返回第几天
 /// @param year 年
