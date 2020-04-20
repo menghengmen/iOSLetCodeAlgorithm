@@ -105,8 +105,25 @@ struct ListNode {
     }
     NSLog(@"%d",result);
     // 9:输入一个double数 输出描述: 输出人民币格式
-    NSMutableString *moneyStr = [self calculateMoneyBy:5];
+    [self calculateMoneyBy:5];
+    // 10:将一个字符中所有出现的数字前后加上符号“*”，其他字符保持不变
+    [self addStarWithStr:@"sdasda3df0fdf98fdf3"];
 }
+
+-(NSMutableString *)addStarWithStr:(NSString *)starStr{
+    NSArray *starArr = [starStr componentsSeparatedByString:@" "];
+    NSMutableString *targetStr = [NSMutableString new];
+    for (int i =0; i < starArr.count; i ++) {
+        if ([starArr[i] doubleValue] - 0 >=0 && [starArr[i] doubleValue] - 0 <=9) {
+            [targetStr appendString:[NSString stringWithFormat:@"*%@*",starArr[i]]];
+        } else {
+            [targetStr appendString:starArr[i]];
+        }
+    }
+    return targetStr;
+}
+
+
 
 -(NSMutableString *)calculateMoneyBy:(double)money{
     NSMutableString *moneyStr = [NSMutableString new];
