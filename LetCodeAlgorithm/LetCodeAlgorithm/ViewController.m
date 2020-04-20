@@ -105,7 +105,7 @@ struct ListNode {
     }
     NSLog(@"%d",result);
     // 9:输入一个double数 输出描述: 输出人民币格式
-    NSMutableString *moneyStr = [self calculateMoneyBy:34843];
+    NSMutableString *moneyStr = [self calculateMoneyBy:5];
 }
 
 -(NSMutableString *)calculateMoneyBy:(double)money{
@@ -114,28 +114,29 @@ struct ListNode {
    // NSArray *moneyArr   = @[@"仟",@"万",@"亿",@"元",@"角",@"分",@"零"];
     if (money/10000 > 1) { // 万部分
         [moneyStr appendString:[NSString stringWithFormat:@"%@万",digitalArr[(int)money/10000-1]]];
-        money -= (int)money/10000;
+        money -= (int)money /10000 * 10000;
     }
         
     
     if (money/1000 > 1){
         [moneyStr appendString:[NSString stringWithFormat:@"%@仟",digitalArr[(int)money/1000-1]]];
-        money -= (int)money/1000;
+        money -= (int)money /1000 *1000;
 
     }
     
     if (money/100 >1){
-        [moneyStr appendString:[NSString stringWithFormat:@"%@佰",digitalArr[(int)money/1000-1]]];
-        money -= (int)money/100;
+        [moneyStr appendString:[NSString stringWithFormat:@"%@佰",digitalArr[(int)money/100-1]]];
+        money -= (int)money /100 *100;
 
     } 
     
     if(money/10 >1){
-        [moneyStr appendString:[NSString stringWithFormat:@"%@十",digitalArr[(int)money/1000-1]]];
-        money -= (int)money/10;
+        [moneyStr appendString:[NSString stringWithFormat:@"%@十",digitalArr[(int)money/10-1]]];
+        money -= (int)money/10 *10;
 
     }
-
+        [moneyStr appendString:[NSString stringWithFormat:@"%@",digitalArr[(int)money-1]]];
+    
     return moneyStr;
 }
 
