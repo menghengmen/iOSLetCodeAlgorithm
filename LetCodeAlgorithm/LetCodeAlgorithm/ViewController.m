@@ -107,16 +107,19 @@ struct ListNode {
     // 9:输入一个double数 输出描述: 输出人民币格式
     [self calculateMoneyBy:5];
     // 10:将一个字符中所有出现的数字前后加上符号“*”，其他字符保持不变
-    [self addStarWithStr:@"sdasda3df0fdf98fdf3"];
+    [self addStarWithStr:@"s d a s d a 3 d f 0 f d f 9 8 f d f 3"];
 }
 
 -(NSMutableString *)addStarWithStr:(NSString *)starStr{
     NSArray *starArr = [starStr componentsSeparatedByString:@" "];
     NSMutableString *targetStr = [NSMutableString new];
     for (int i =0; i < starArr.count; i ++) {
-        if ([starArr[i] doubleValue] - 0 >=0 && [starArr[i] doubleValue] - 0 <=9) {
+        char strChar = [starStr characterAtIndex:i];
+
+       if (strChar >47 && strChar <58 ){
             [targetStr appendString:[NSString stringWithFormat:@"*%@*",starArr[i]]];
-        } else {
+
+        }   else {
             [targetStr appendString:starArr[i]];
         }
     }
