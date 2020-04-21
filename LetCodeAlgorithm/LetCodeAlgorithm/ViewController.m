@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #include <stdio.h>
+#import <math.h>
 
 struct ListNode {
     int val;
@@ -108,6 +109,31 @@ struct ListNode {
     [self calculateMoneyBy:5];
     // 10:将一个字符中所有出现的数字前后加上符号“*”，其他字符保持不变
     [self addStarWithStr:@"s d a s d a 3 d f 0 f d f 9 8 f d f 3"];
+    // 11:自守数是指一个数的平方的尾数等于该数自身的自然数。例如：25^2 = 625，76^2 = 5776，9376^2 = 87909376。请求出n以内的自守数的个数
+    [self calculcateInt:10];
+
+}
+
+-(int )calculcateInt:(int)digital{
+    int sum = 0;
+    for (int i =0 ; i <digital; i ++) {
+        int j = pow(10, f1(i));
+        if (i == i*i%j) {
+            NSLog(@"%d",i);
+            sum +=1;
+        }
+        
+        
+    }
+    return sum;
+}
+
+int f1(int n)    //判断此数是几位数
+{
+ int i=1;
+ for(;n>=10;i++)
+  n/=10;
+ return i;
 }
 
 -(NSMutableString *)addStarWithStr:(NSString *)starStr{
