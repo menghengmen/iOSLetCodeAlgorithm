@@ -10,6 +10,7 @@
 #include <stdio.h>
 #import <math.h>
 
+
 struct ListNode {
     int val;
     struct ListNode *next;
@@ -111,8 +112,25 @@ struct ListNode {
     [self addStarWithStr:@"s d a s d a 3 d f 0 f d f 9 8 f d f 3"];
     // 11:自守数是指一个数的平方的尾数等于该数自身的自然数。例如：25^2 = 625，76^2 = 5776，9376^2 = 87909376。请求出n以内的自守数的个数
     [self calculcateInt:10];
+    //12: 输入一个整数，将这个整数以字符串的形式逆序输出
+   // 程序不考虑负数的情况，若数字含有0，则逆序形式也含有0，如输入为100，则输出为001
+    int strInt = 12345;
+    NSString *targetStr = [NSString stringWithFormat:@"%d",strInt];
+    [self reverseString:targetStr];
 
 }
+
+
+/// 字符串的反转
+/// @param targetStr 目标字符串
+-(NSString *)reverseString:(NSString *)targetStr{
+    NSMutableString *str = [NSMutableString stringWithCapacity:targetStr.length];
+    for (int i = targetStr.length -1; i >=0; i --) {
+        [str appendString:[targetStr substringWithRange:NSMakeRange(i, 1)]];
+    }
+    return  str;
+}
+
 
 -(int )calculcateInt:(int)digital{
     int sum = 0;
