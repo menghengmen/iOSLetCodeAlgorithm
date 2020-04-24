@@ -114,10 +114,13 @@ struct ListNode {
     [self calculcateInt:10];
     //12: 输入一个整数，将这个整数以字符串的形式逆序输出
    // 程序不考虑负数的情况，若数字含有0，则逆序形式也含有0，如输入为100，则输出为001
-    int strInt = 12345;
+    int strInt = 00001;
     NSString *targetStr = [NSString stringWithFormat:@"%d",strInt];
     [self reverseString:targetStr];
-
+    // 13:将一个英文语句以单词为单位逆序排放。例如“I am a boy”，逆序排放后为“boy a am I”
+    //所有单词之间用一个空格隔开，语句中除了英文字母外，不再包含其他字符
+    [self reverseString:@"I am a boy"];
+    
 }
 
 
