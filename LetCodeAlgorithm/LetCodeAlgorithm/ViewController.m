@@ -140,11 +140,41 @@ struct ListNode {
 //    +   A10  =  (10,-10)
 //    结果 （10， -10）
     [self calcalateCoordinates:@[@"a10",@"s20",@"w10",@"d30",@"x",@"a70",@"1b1"]];
-    ///  三数之和
+    /// 15 三数之和
     ///  给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
     [self threeNumber:@[@"1",@"2",@"3",@"4",@"5",@"-3",@"-4",@"-2"]];
+    /// 16. 最接近的三数之和
+//    给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
+//
+//    例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.
+//
+//    与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).
 
 
+}
+
+int threeSumClosest(int* nums, int numsSize, int target){
+    qsort(nums,numsSize,sizeof(nums[0]),cmp);
+    int ans = nums[0]+nums[1]+nums[2];
+    for(int i=0; i<numsSize; i++){
+        int start = i+1,end = numsSize-1;
+        while(start<end){
+            int sum = nums[start] + nums[end] + nums[i];
+            if(abs(target - sum)<abs(target - ans))
+                ans = sum;
+            if(sum>target)
+                end--;
+            else if(sum<target)
+                start++;
+            else return ans;
+        }
+    }
+    return ans;
+}
+
+int cmp(const void *a, const void *b)
+{
+    return *(int*)a - *(int*)b;
 }
 
 -(void)threeNumber:(NSArray *)arr{
