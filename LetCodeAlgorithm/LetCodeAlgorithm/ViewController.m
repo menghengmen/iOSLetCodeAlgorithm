@@ -140,8 +140,26 @@ struct ListNode {
 //    +   A10  =  (10,-10)
 //    结果 （10， -10）
     [self calcalateCoordinates:@[@"a10",@"s20",@"w10",@"d30",@"x",@"a70",@"1b1"]];
+    ///  三数之和
+    ///  给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
+    [self threeNumber:@[@"1",@"2",@"3",@"4",@"5",@"-3",@"-4",@"-2"]];
+
+
+}
+
+-(void)threeNumber:(NSArray *)arr{
+    for (int i =0 ; i < arr.count; i ++) {
+        for (int j = 0; j < arr.count; j ++) {
+            for (int k = 0; k <arr.count ; k ++) {
+                if ([arr[i] intValue] + [arr[j] intValue] + [arr[k] intValue] == 0) {
+                    NSLog(@"%@---%@--%@",arr[i],arr[j],arr[k]);
+                }
+            }
+        }
+    }
     
 }
+
 
 -(CGPoint)calcalateCoordinates:(NSArray *)coordsArr{
     int x = 0;
