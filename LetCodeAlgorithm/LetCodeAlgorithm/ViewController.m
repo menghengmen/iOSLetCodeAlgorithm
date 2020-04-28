@@ -149,9 +149,35 @@ struct ListNode {
 //    例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.
 //
 //    与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).
-
+    int q = [self closeThree:@[@1,@2,@3,@4,@5,@8] target:5];
 
 }
+
+-(int)closeThree:(NSArray *)nums target:(int)target{
+    int ans = [nums[0] intValue]+[nums[1] intValue]+[nums[2] intValue];
+    for (int i = 0; i <nums.count; i ++) {
+        int low = i +1;
+        int high = nums.count -1;
+        while (low <high) {
+            int sum = [nums[i] intValue] +[nums[low] intValue] +[nums[high] intValue];
+            if (  abs(target - sum) < abs(target - ans) ){
+                ans = sum;
+            }
+            if (sum >target) {
+                high = high -1;
+            } else if(sum <target){
+                low = low +1;
+            } else {
+                return ans;
+            }
+        
+        }
+    }
+    
+    
+    return ans;
+}
+
 
 int threeSumClosest(int* nums, int numsSize, int target){
     qsort(nums,numsSize,sizeof(nums[0]),cmp);
