@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #include <stdio.h>
 #import <math.h>
+#import <assert.h>
 #import "BinaryTreeViewController.h"
 
 
