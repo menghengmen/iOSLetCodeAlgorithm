@@ -33,8 +33,34 @@ struct ListNode {
 
 }
 
+-(void)getUrl{
+    NSString *urlStr = @"192.168.8080,http://192.148.8083,193.128.8080";
+    NSArray *urlArr = [urlStr componentsSeparatedByString:@","];
+    
+    for (NSString *url in urlArr) {
+        NSMutableString *mulStr = [[NSMutableString alloc] init];
+        if (![url hasPrefix:@"http://"]) {
+            if (![url hasPrefix:@"https://"]) {
+                [mulStr appendFormat:@"%@", [NSString stringWithFormat:@"https://%@",url]];
+            }
+        }
+        if ([mulStr isEqualToString:@""]) { // 带http或者https前缀
+            [mulStr appendFormat:@"%@", url];
+        }
+        
+        if (![mulStr hasSuffix:@"/"]) {
+            [mulStr appendString:@"/"];
+        }
+        NSLog(@"%@",mulStr);
+
+    }
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getUrl];
+    
     
     //   算法题描述：1 给定一个整数数组 nums 和一个目标值         target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
     //    你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
